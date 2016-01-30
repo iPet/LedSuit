@@ -1,0 +1,32 @@
+<%= form_for @led_event, url: scenario_led_events_path, scenario_id: @scenario, html: { method: :post } do |f| %>
+   <div class="form-group">
+    <%= f.label :color, :class => 'control-label' %>
+    <%= f.color_field :color %>
+  </div> 
+
+
+
+  <div class="form-group">
+    <%= f.label :mode, :class => 'control-label' %>
+    <%= f.select("mode", modes_select_collect, { include_blank: false }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :start_time, :class => 'control-label' %>
+    <%= f.number_field :start_time, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :end_time, :class => 'control-label' %>
+    <%= f.number_field :end_time, :class => 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :part_id, :class => 'control-label' %>
+    <%= f.select("part_id", parts_select_collect, { include_blank: false }) %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                scenario_led_events_path, scenario_id: @scenario, :class => 'btn' %>
+  </div>
+<% end %>

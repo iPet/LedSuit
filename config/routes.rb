@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  resources :suits
+  get 'welcome/index'
+
+  resources :parts
+
+  resources :scenarios do
+    resources :led_events
+  end
   get 'home/index'
 
-  root 'home#index'
+  root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -42,6 +50,8 @@ Rails.application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
+
+
 
   # Example resource route with concerns:
   #   concern :toggleable do

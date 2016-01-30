@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  color: MyString
+  blink: false
+  blink_delay: 1
+  wave: false
+  wave_repeat: 1
+  start_time: 1
+  end_time: 1
+  scenario_id: 
+  part_id: 
+
+two:
+  color: MyString
+  blink: false
+  blink_delay: 1
+  wave: false
+  wave_repeat: 1
+  start_time: 1
+  end_time: 1
+  scenario_id: 
+  part_id: 

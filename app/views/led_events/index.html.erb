@@ -1,0 +1,33 @@
+<%- model_class = LedEvent -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization',
+       'version':'1','packages':['timeline']}]}"></script>
+<script type="text/javascript">
+
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+
+  var container = document.getElementById('example3.1');
+  var chart = new google.visualization.Timeline(container);
+
+  var dataTable = new google.visualization.DataTable();
+  dataTable.addColumn({ type: 'string', id: 'Position' });
+  dataTable.addColumn({ type: 'string', id: 'Name' });
+  dataTable.addColumn({ type: 'number', id: 'Start' });
+  dataTable.addColumn({ type: 'number', id: 'End' });
+  dataTable.addRows(<%= @rows.to_json.html_safe %>);
+
+var options = {
+  colors:  <%= @colors.to_json.html_safe %>
+}  
+  chart.draw(dataTable, options );
+}
+</script>
+
+<div id="example3.1" style="height: 400px;"></div>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_scenario_led_event_path, :scenario_id => @scenario_id,
+            :class => 'btn btn-primary' %>
